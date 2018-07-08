@@ -4,9 +4,10 @@ import unittest
 
 # O(n)
 def is_unique(string):
+    # assumes that string only uses the lower case letters a through z.
     char_flag = 0
     for c in string:
-        code = ord(c)
+        code = ord(c) - ord('a')
         if char_flag & (1 << code):
             return False
         char_flag |= (1 << code)
@@ -19,11 +20,11 @@ class Test(unittest.TestCase):
                 "a",
                 "ab",
                 "",
-                "abcdefg,hIjKlmn",
+                "abcdefghijklmn",
                 "abcxyz",
                 ]
         non_uniques = [
-                "Hello, World!",
+                "helloworld",
                 "aa"
                 "abcdefa"
                 ]
